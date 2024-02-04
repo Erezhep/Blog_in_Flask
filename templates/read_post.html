@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} Чтение записа {% endblock %}
+
+{% block content %}
+        
+    <div class="container mt-5">
+        <h3 class="text-center">Запись - {{ id }}</h3>
+        <div class="single-post">
+            <div class="single-post__content">
+                <h1 class="single-post__title">{{ post.title }}</h1>
+                <span class="single-post__code">{{ post.created_at.strftime('%d %B %Y') }}</span>
+                <div class="single-post__text">{{ post.content | safe }}</div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

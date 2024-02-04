@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %} Главная {% endblock %}
+
+{% block content %}
+    <h2 class="text-center">Главная страница</h2>
+    {% if not current_user.is_authenticated %}
+        <div class="container">
+            {% for post in posts[:5] %}
+            <div class="row mt-5">
+                <div class="preview-card">
+                    <div class="preview-card__wrp">
+                        <div class="preview-card__item">
+                                <div class="preview-card__content">
+                                <span class="preview-card__code"><a href="{{ url_for('profile', id = post.user_id) }}">{% if post.user_id == current_user.id %} Вы {% else %} {{ post.author }} {% endif %}</a>   |    {{ post.created_at.strftime('%d %B %Y') }}</span>
+                                <div class="preview-card__title">{{ post.title }}</div>
+                                <div class="preview-card__text">{{ post.content[:500] | safe }}{% if post.content|length > 500 %}...{% endif %}</div>
+                                <a href="{{ url_for('read_post', id = post.id) }}" class="preview-card__button">Читать дальше</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <p class="alert alert-warning">Авторизуйте если хотите дальше посмотреть</p>
+        {% else %}
+        {% for post in posts %}
+            <div class="row mt-5">
+                <div class="preview-card">
+                    <div class="preview-card__wrp">
+                        <div class="preview-card__item">
+                                <div class="preview-card__content">
+                                <span class="preview-card__code"><a href="{{ url_for('profile', id = post.user_id) }}">{% if post.user_id == current_user.id %} Вы {% else %} {{ post.author }} {% endif %}</a>   |    {{ post.created_at.strftime('%d %B %Y') }}</span>
+                                <div class="preview-card__title">{{ post.title }}</div>
+                                <div class="preview-card__text">{{ post.content[:500] | safe }}{% if post.content|length > 500 %}...{% endif %}</div>
+                                <a href="{{ url_for('read_post', id=post.id) }}" class="preview-card__button">Читать дальше</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+{% endblock %}

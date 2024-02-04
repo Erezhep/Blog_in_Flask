@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} Вход {% endblock %}
+
+{% block content %}
+    {% for cat, msg in get_flashed_messages(True) %}
+        <div class="alert alert-{{ cat }}">{{ msg }}</div>
+    {% endfor %}
+    <br>
+    <form class="form-control" method="post">
+        <h1 class="text-center">Вход в аккаунт</h1>
+        <br>
+          <div class="form-group row">
+            <label for="username" class="col-sm-2 col-form-label">Никнейм</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="username" name="username" placeholder="Никнейм" value="{{ username }}">
+            </div>
+          </div>
+          <br>
+        <div class="form-group row">
+            <label for="password" class="col-sm-2 col-form-label">Пароль</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="{{ password }}">
+            </div>
+          </div>
+          <br>
+          <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-success">Войти</button>
+          </div>
+          <br>
+    </form>
+{% endblock %}

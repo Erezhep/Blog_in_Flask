@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %} Редактирование профиля {% endblock %}
+
+{% block content %}
+    {% include 'nav_in.html' %}
+    {% for cat, msg in get_flashed_messages(True) %}
+        <div class="alert alert-{{ cat }}">{{ msg }}</div>
+    {% endfor %}
+    <form method = 'POST' class="form-control" enctype="multipart/form-data">
+        <h3 class="text-center">Редактирование профиля</h3><br>
+        <div class="form-group row">
+            <label for="first_name" class="col-sm-2 col-form-label">Имя</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="first_name" name="first_name" value="{{ current_user.first_name }}">
+            </div>
+          </div>
+          <br>
+          <div class="form-group row">
+            <label for="last_name" class="col-sm-2 col-form-label">Фамилия</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="last_name" name="last_name" value="{{ current_user.last_name }}">
+            </div>
+          </div>
+          <br>
+          <div class="form-group row">
+            <label for="username" class="col-sm-2 col-form-label">Никнейм</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="username" name="username" value="{{ current_user.username }}">
+            </div>
+          </div>
+          <br>
+          <div class="form-group row">
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="email" name="email" value="{{ current_user.email }}">
+            </div>
+          </div>
+          <br>
+          <div class="form-group row">
+            <label for="instagram" class="col-sm-2 col-form-label">Instagram</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="instagram" name="instagram" value="{{ current_user.instagram }}">
+            </div>
+          </div>
+          <br>
+          <div class="form-group row">
+            <label for="x" class="col-sm-2 col-form-label">X</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="x" name="x" value="{{ current_user.x }}">
+            </div>
+          </div>
+          <br>
+          <div class="form-group row">
+            <label for="facebook" class="col-sm-2 col-form-label">Facebook</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="facebook" name="facebook" value="{{ current_user.facebook }}">
+            </div>
+          </div>
+          <br>
+          <div class="form-group row">
+            <label for="github" class="col-sm-2 col-form-label">GitHub</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="github" name="github" value="{{ current_user.github }}">
+            </div>
+          </div>
+          <br>
+          <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-success">Сохранить</button>
+          </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,8 @@
+<header class="d-flex justify-content-center py-3">
+    <ul class="nav nav-pills">
+        <li class="nav-item"><a href="{{ url_for('profile', id = current_user.id) }}" class="nav-link">Профиль</a></li>
+        <li class="nav-item"><a href="{{ url_for('edit_profile') }}" class="nav-link">Редактировать профиль</a></li>
+        <li class="nav-item"><a href="{{ url_for('my_posts') }}" class="nav-link">Мой записи</a></li>
+        <li class="nav-item"><a href="{{ url_for('logout') }}" class="nav-link">Выход</a></li>
+    </ul>                           
+</header>

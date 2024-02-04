@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %} Профиль {% endblock %}
+
+{% block content %}
+    {% if user.id == current_user.id %}
+    {% include 'nav_in.html' %}
+    {% endif %}
+    <div class="container profile-container form-control">
+        {% if user.id == current_user.id %}
+            <h2 class="text-center">Мой профиль</h1>
+        {% else %}
+            <h2 class="text-center">Профиль пользователя - {{ user.username }}</h2>
+        {% endif %}
+        <!-- Аватар пользователя -->
+        <div class="profile-avatar">
+            <span>
+            <img class="logo1" src="{{ url_for('static', filename='img/avatar.png') }}" alt="default-avatar" height="50">
+            <strong>{{ current_user.username }}</strong>
+            </span>
+            <span class="pad"><a href="{{ url_for('posts', id = user.id) }}" class="profile-link">Посты {{ p }}</a></span>
+        </div>
+        <br>
+        <p><strong>Имя:</strong> {{ user.first_name }}</p>
+        <p><strong>Фамилия:</strong> {{ user.last_name }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Дата создания:</strong> {{ user.created_at }}</p>
+        <div class="messages">
+            <strong>Социальные сети:</strong>
+            {% set ms = ["", "None"] %}
+            {% if not (user.instagram in ms) %}
+                <a href="{{ user.instagram }}" target="_blank"><img src="{{ url_for('static', filename = 'img/instagram.png') }}" alt="instagram" height="20"></a>
+            {% endif %}
+            {% if not user.x in ms %}
+                <a href="{{ user.x }}" target="_blank"><img src="{{ url_for('static', filename = 'img/x.png') }}" alt="X" height="20"></a>
+            {% endif %}
+            {% if not user.facebook in ms %} 
+                <a href="{{ user.facebook }}" target="_blank"><img src="{{ url_for('static', filename = 'img/facebook.png') }}" alt="Facebook" height="20"></a>   
+            {% endif %}
+            {% if not user.github in ms %}
+                <a href="{{ user.github }}" target="_blank"><img src="{{ url_for('static', filename = 'img/github.png') }}" alt="GitHub" height="20"></a>
+            {% endif %}
+            {% if user.instagram in ms and user.x in ms and user.facebook in ms and user.github in ms %}
+                Нет ссылки
+            {% endif %}
+        </div>
+    </div>
+    
+    
+{% endblock %}

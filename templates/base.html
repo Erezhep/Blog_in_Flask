@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>{% block title %} {% endblock %}</title>
+    {% block head %}
+        {{ ckeditor.load() }}
+    {% endblock %}
+</head>
+<body>
+    <div class="container">
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+          <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+            <img class="logo1 bi me-2" height="50" src="{{ url_for('static', filename='img/my_blog.png') }}">
+          </a>
+    
+          <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 nav-css">
+            <li><a href="{{ url_for('home') }}" class="nav-link px-2 link-dark">Главная</a></li>
+            <li><a href="{{ url_for('about') }}" class="nav-link px-2 link-dark">О нас</a></li>
+            <li><a href="{{ url_for('add_post') }}" class="nav-link px-2 link-dark">Добавить запись</a></li>
+          </ul>
+          {% if not current_user.is_authenticated %}
+          <div class="col-md-3 text-end">
+            <a href="{{ url_for('login') }}" class="btn btn-outline-primary me-2">Войти</a>
+            <a href="{{ url_for('register') }}" class="btn btn-outline-primary me-2">Регистрация</a>
+          </div>
+          {% else %}
+          <div class="col-md-3 text-end">
+            <a href="{{ url_for('profile', id = current_user.id) }}" class="nav-link px-2 link-dark">
+              {{ current_user.username }} 
+              <img class="logo1" src="{{ url_for('static', filename='img/avatar.png') }}" alt="default-avatar" height="50">
+          </a>                  
+          </div>
+          {% endif %}
+        </header>
+      </div>
+    <div class="container">
+        {% block content %}
+          
+        {% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %} Записи пользователя {% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h3 class="text-center">Записи пользователя - {{ user.username }}</h3>
+        <p class="alert alert-info">Здесь фото не отображается, технические проблемы, скоро решаем</p>
+        {% if posts  %}
+        {% for post in posts %}
+        <div class="row mt-5">
+            <div class="preview-card">
+                <div class="preview-card__wrp">
+                    <div class="preview-card__item">
+                            <div class="preview-card__content">
+                            <div class="preview-card__title">{{ post.title }}</div>
+                            <span class="preview-card__code">{{ post.created_at.strftime('%d %B %Y') }}</span>
+                            <div class="preview-card__text form-control">{{ post.content[:500] | safe }}{% if post.content|length > 500 %}...{% endif %}</div>
+                            <a href="{{ url_for('read_post', id = post.id) }}" class="btn btn-primary">Читать дальше</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+            <p class="alert alert-info">Нет записи</p>
+        {% endif %}
+    </div>
+{% endblock %}

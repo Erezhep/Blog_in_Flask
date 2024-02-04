@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %} О нас {% endblock %}
+
+{% block content %}
+    <style>
+        .about {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        .container1 {
+            max-width: 800px;
+            margin: 2em auto;
+            padding: 1em;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .t {
+            color: #007bff;
+        }
+
+        .txt_ab {
+            line-height: 1.6;
+        }
+    </style>
+
+    <div class="container1">
+        <div class="alert alert-primary">
+            <h3 class="text-center">О нас</h3>
+            <p class="txt_ab">
+                Привет! Мое имя Бекарыс, и я студент второго курса в университете Astana International University.
+                Мне 18 лет, и я создатель этого веб-сайта. Сайт был запущен в январе 2024 года.
+            </p>
+            <p class="txt_ab">
+                Это мой первый проект. В будущем я могу продолжить проект, создав команду.
+                Здесь каждый пользователь может создавать, редактировать, удалять и читать статьи. Надеюсь, вам нравится пользоваться сайтом!
+            </p>
+            <p class="txt_ab">Не забудьте зарегистрироваться/войти</p>
+            <p class="txt_ab"></p>
+        </div>
+        <br>
+        <h4 class="text-center">Статистика сайта</h4>
+        <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card text-white bg-primary">
+                  <div class="card-body">
+                    <h5 class="card-title text-center"><i class="bi bi-person"></i> Количество пользователей:</h5>
+                    <p class="card-text text-center">{{ users_count }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card text-white bg-success">
+                  <div class="card-body">
+                    <h5 class="card-title text-center"><i class="bi bi-file-text"></i> Количество статей:</h5>
+                    <p class="card-text text-center">{{ posts_count }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+{% endblock %}

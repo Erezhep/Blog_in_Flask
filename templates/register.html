@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %} Регистрация {% endblock %}
+
+{% block content %}
+    {% for cat, msg in get_flashed_messages(True) %}
+        {% if cat != "success" %}
+            <div class="alert alert-{{ cat }}">{{ msg }}</div>
+        {% endif %}
+    {% endfor %}
+    <form class="form-control" method="post">
+        <h1 class="text-center">Регистрация</h1>
+        <br>
+        <div class="form-group row">
+            <label for="first_name" class="col-sm-2 col-form-label">Имя</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Имя" value="{{ first_name }}">
+            </div>
+          </div>
+          <br>
+          <div class="form-group row">
+            <label for="last_name" class="col-sm-2 col-form-label">Фамилия</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Фамилия" value="{{ last_name }}">
+            </div>
+          </div>
+          <br>
+          <div class="form-group row">
+            <label for="username" class="col-sm-2 col-form-label">Никнейм</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="username" name="username" placeholder="Никнейм" value="{{ username }}">
+            </div>
+          </div>
+          <br>
+          <div class="form-group row">
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ email }}">
+            </div>
+          </div>
+          <br>
+        <div class="form-group row">
+            <label for="password" class="col-sm-2 col-form-label">Пароль</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="{{ password }}">
+            </div>
+          </div>
+          <br>
+          <div class="form-group row">
+            <label for="password2" class="col-sm-2 col-form-label">Подтверждите пароль</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="password2" name="password2" placeholder="Password" value="{{ password2 }}">
+            </div>
+          </div>
+          <br>
+          <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-success">Регистрация</button>
+          </div>
+          <br>
+    </form>
+{% endblock %}
